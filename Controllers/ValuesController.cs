@@ -21,7 +21,9 @@ namespace DatingApp.API.Controllers
         [HttpGet]
         public async Task<IActionResult> GetValues()
         {
-             var values = await _context.Values.ToListAsync();
+            var values = await _context.Values.ToListAsync();
+           // Response.Headers.Add("Access-Control-Allow-Credentials", "true");
+            //Response.Headers.Add("Access-Control-Allow-Origin", "http://localhost:4200");
             return Ok(values);
             //throw new Exception("Test Exception");
         }
@@ -30,7 +32,7 @@ namespace DatingApp.API.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetValue(int id)
         {
-            var value = await _context.Values.FirstOrDefaultAsync(x=>x.id==id);
+            var value = await _context.Values.FirstOrDefaultAsync(x => x.id == id);
             return Ok(value);
         }
 
